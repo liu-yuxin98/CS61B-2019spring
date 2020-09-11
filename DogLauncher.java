@@ -1,6 +1,7 @@
 /** test dog1.java */
 public class DogLauncher {
 	public static void main(String[] args){
-		Dog1.MakeNoise();
+		Dog d = new Dog(18);
+		d.makeNoise();
 		}
 	}
