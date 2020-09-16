@@ -100,6 +100,18 @@ public class Body {
 		yyPos += dt*yyVel ; /* update position iny */
 	}
 	
+	/* draw bodys*/
+	public void draw(){
+		StdDraw.enableDoubleBuffering();
+		/** Sets up the universe so it goes from
+		/* Stamps three copies of imageToDraw in a triangular pattern. */
+		// imgFileName = "images/"+imgFileName; /* 相对路径*/
+		StdDraw.picture(xxPos, yyPos, imgFileName);
+		/* Shows the drawing to the screen, and waits 2000 milliseconds. */
+		StdDraw.show();
+		StdDraw.pause(100);
+
+	}
 
 
 
