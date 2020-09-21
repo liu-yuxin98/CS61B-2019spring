@@ -37,14 +37,15 @@ public class IntList {
 		}
 	}
 
-	public static void main(String[] args) {
-		IntList L = new IntList(15, null);
-		L = new IntList(10, L);
-		L = new IntList(5, L);
-		L = new IntList(0, L);
-		System.out.println(L.iterativeSize());
-		System.out.println(L.size());
-		System.out.println(L.get(2));
+	// public static void main(String[] args) {
+	// 	IntList L = new IntList(15, null);
+	// 	L = new IntList(10, L);
+	// 	L = new IntList(5, L);
+	// 	L = new IntList(0, L);
+	// 	System.out.println(L.iterativeSize());
+	// 	System.out.println(L.size());
+	// 	System.out.println(L.get(2));
 
-	}
-	}
+	// }
+
+}
