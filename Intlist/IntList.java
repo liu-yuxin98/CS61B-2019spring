@@ -37,15 +37,34 @@ public class IntList {
 		}
 	}
 
-	// public static void main(String[] args) {
-	// 	IntList L = new IntList(15, null);
-	// 	L = new IntList(10, L);
-	// 	L = new IntList(5, L);
-	// 	L = new IntList(0, L);
-	// 	System.out.println(L.iterativeSize());
-	// 	System.out.println(L.size());
-	// 	System.out.println(L.get(2));
+	/* add x into the first*/
+	public void addfirst(int x){
+		first = x;
+		rest = this; 
+	}
+	/* square the values of the IntList 
+	recursion, creating new IntList
+	*/
+	public static IntList square(IntList L){
+		if(L.rest == null){
+			return new IntList(L.first*L.first,null);
+		}else{
+			return new IntList( L.first*L.first, square(L.rest) );
+		}
+	}
 
-	// }
+	public static void main(String[] args) {
+		IntList L = new IntList(15, null);
+		L = new IntList(10, L);
+		L = new IntList(5, L);
+		L = new IntList(0, L);
+		IntList L2 = square(L);
+		System.out.println(L2.get(0));
+		System.out.println(L2.get(1));
+		System.out.println(L2.get(2));
+		System.out.println(L2.get(3));
+		System.out.println(L.get(2));
+
+	}
 
 }
