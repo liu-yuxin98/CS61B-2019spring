@@ -158,20 +158,46 @@ public class BSTMap<K extends Comparable<K>, V>  implements Map61B<K, V> {
                 T = T.right;
             } else if(T.right == null && T.left!=null){ /* one child*/
                 T = T.left;
-            } else{ /* two children*/
+            } else{
                 Node prenode = pre(T);
-                if(prenode == T.left){ /* pre node doesn't have children*/
-                    T.left = prenode.left;
-                    prenode.left = null;
-                    T.key = prenode.key;
-                    T.value = prenode.value;
-                } else { /* prenode isn't directly connect to node T*/
-                    prenode = remove(prenode, prenode.key);
+                Node beforeprenode = beforePre(T);
+                /* 判断 prenode的情况，prenode是否有子node
+                *  由于我们找到使prenode,所以如果prenode子node,那么也会是在他的left
+                * */
+                if(prenode.left == null){ /* 没有子Node*/
+                    beforeprenode.right = remove(prenode, prenode.key);
                     prenode.left = T.left;
                     prenode.right = T.right;
                     T = prenode;
+                } else if(prenode.left!=null){ /* 有子node*/
+                    if(prenode == T.left) {
+                        T.left = prenode.left;
+                        prenode.left = null;
+                        T.value = prenode.value;;
+                        T.key = prenode.key;
+                    } else {
+                        Node temp = prenode;
+                        beforeprenode.right = remove(prenode, prenode.key);
+                        temp.left = T.left;
+                        temp.right = T.right;
+                        T= temp;
+                    }
+
                 }
 
+//                /* two children*/
+//                Node prenode = pre(T);
+//                if(prenode == T.left){ /* pre node doesn't have children*/
+//                    T.left = prenode.left;
+//                    prenode.left = null;
+//                    T.key = prenode.key;
+//                    T.value = prenode.value;
+//                } else { /* prenode isn't directly connect to node T*/
+//                    prenode = remove(prenode, prenode.key);
+//                    prenode.left = T.left;
+//                    prenode.right = T.right;
+//                    T = prenode;
+//                }
             }
         }
         T.size = size(T.left)+size(T.right)+1;
@@ -186,6 +212,20 @@ public class BSTMap<K extends Comparable<K>, V>  implements Map61B<K, V> {
         return p;
     }
 
+    /*  find prenode的前一个node，这样可以较好地在程序中更改*/
+    public Node beforePre(Node T){
+        /* T.left == preNode, 这种情况下beforepre就是T本身*/
+        if(T.left.right == null){
+            return T;
+        } else {
+            Node p = T.left;
+            while(p.right.right!=null){
+                p = p.right;
+            }
+            return p;
+        }
+
+    }
 
     public V remove(K key, V value){
         throw new UnsupportedOperationException();
@@ -246,8 +286,5 @@ public class BSTMap<K extends Comparable<K>, V>  implements Map61B<K, V> {
            return getMin(T.left);
         }
     }
-
-
-
 
 }

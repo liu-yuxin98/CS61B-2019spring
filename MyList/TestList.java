@@ -179,8 +179,20 @@ public class TestList {
         System.out.println(VL.getClass());
         System.out.println(VL.hashCode());
         System.out.println(VL.toString());
+    }
+    @Test
+    public void TestReverse(){
+        SLList<Integer> SL = new SLList<>();
+        SL.reverse(); /*empty list reverse*/
+        SL.addLast(1);
+        SL.reverse();
+        SL.addLast(2);
+        SL.addLast(3);
+        SL.addLast(4);
+        SL.reverse();
+        SL.printList();
+
 
     }
-
 
 }

@@ -10,7 +10,7 @@
  */
 
 public class StdDrawDemo {
-	public static String imageToDraw = "advice.png";
+	public static String imageToDraw = "../images/starfield.jpg";
 
 	/* Draws three copies of the image in a rectangular pattern. */
 	public static void drawThree() {
@@ -108,7 +108,7 @@ public class StdDrawDemo {
 		/** Try commenting out some of these calls and
 		* notice the differences. */
 		drawThree();
-		//drawRandom();
-		//drawZoom();
+		// drawRandom();
+		// drawZoom();
 	}
 }

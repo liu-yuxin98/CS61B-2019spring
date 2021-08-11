@@ -8,15 +8,21 @@ public class BasicInDemo {
 		 * of the specified type. */
 
 		/* Compare the calls below to the contents of BasicInDemo_input_file.txt */
+    String [] results = in.readAllStrings();
+    for(String item:results){
+    	System.out.println(item);
+    }
 
-		int firstItemInFile = in.readInt();
-		double secondItemInFile = in.readDouble();
-		String thirdItemInFile = in.readString();
-		String fourthItemInFile = in.readString();
-		double fifthItemInFile = in.readDouble();
 
-		System.out.println("The file contained "  + firstItemInFile + ", " + 
-			               secondItemInFile + ", " + thirdItemInFile + ", " +
-			               fourthItemInFile + ", and " + fifthItemInFile);
+	// 	int firstItemInFile = in.readInt();
+	// 	double secondItemInFile = in.readDouble();
+	// 	String thirdItemInFile = in.readString();
+	// 	String fourthItemInFile = in.readString();
+	// 	double fifthItemInFile = in.readDouble();
+
+	// 	System.out.println("The file contained "  + firstItemInFile + ", " + 
+	// 		               secondItemInFile + ", " + thirdItemInFile + ", " +
+	// 		               fourthItemInFile + ", and " + fifthItemInFile);
+	// 
 	}
 } 

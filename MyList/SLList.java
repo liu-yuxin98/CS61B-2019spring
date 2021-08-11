@@ -13,6 +13,7 @@ public class SLList<lochNess> implements List61B<lochNess> {
             next = null;
         }
     }
+
     private int size;
     private stuffNode sentinel;
     public stuffNode p; /* point last*/
@@ -95,49 +96,63 @@ public class SLList<lochNess> implements List61B<lochNess> {
         }
     }
     /* insert x to the position*/
+//    @Override
+//    public void insert(lochNess x, int position){
+//        /* insert into an empty list*/
+//        if(size ==0){
+//            if(position>=1){
+//                System.out.println("out of index");
+//            }else{
+//                sentinel.next = new stuffNode(x,null);
+//                size += 1;
+//                p = p.next;
+//            }
+//        }else{
+//            /* position = 0*/
+//            if(position==0){
+//                size += 1;
+//                stuffNode temp = sentinel.next;
+//                sentinel.next = new stuffNode(x,temp);
+//                temp = null;
+//            }
+//            /* insert into middle*/
+//            if(0<position && position<size){
+//                size += 1;
+//                stuffNode temp = sentinel.next;
+//                for(int i=0;i<position-1;i++){
+//                    temp = temp.next;
+//                }
+//                stuffNode tempp = temp;
+//                temp.next = new stuffNode(x,tempp.next);
+//                tempp = null;
+//                temp = null;
+//            }
+//            /* insert into end*/
+//            if(position==size){
+//                size +=1;
+//                p.next = new stuffNode(x,null);
+//                p = p.next;
+//            }
+//            if(position>size){
+//                System.out.println("out of index");
+//            }
+//        }
+//    }
+//
     @Override
-    public void insert(lochNess x, int position){
-        /* insert into an empty list*/
-        if(size ==0){
-            if(position>=1){
-                System.out.println("out of index");
-            }else{
-                sentinel.next = new stuffNode(x,null);
-                size += 1;
-                p = p.next;
-            }
-        }else{
-            /* position = 0*/
-            if(position==0){
-                size += 1;
-                stuffNode temp = sentinel.next;
-                sentinel.next = new stuffNode(x,temp);
-                temp = null;
-            }
-            /* insert into middle*/
-            if(0<position && position<size){
-                size += 1;
-                stuffNode temp = sentinel.next;
-                for(int i=0;i<position-1;i++){
-                    temp = temp.next;
-                }
-                stuffNode tempp = temp;
-                temp.next = new stuffNode(x,tempp.next);
-                tempp = null;
-                temp = null;
-            }
-            /* insert into end*/
-            if(position==size){
-                size +=1;
-                p.next = new stuffNode(x,null);
-                p = p.next;
-            }
-            if(position>size){
-                System.out.println("out of index");
-            }
+    public void insert(lochNess x, int pos){
+        if(sentinel.next == null){
+           addFirst(x);
+           return;
         }
-
-
+        stuffNode currentNode = sentinel.next;
+        while(pos>1 && currentNode.next!=null){
+            pos --;
+            currentNode = currentNode.next;
+        }
+        stuffNode newNode = new stuffNode(x,currentNode.next);
+        currentNode.next = newNode;
+        size += 1;
     }
 
     /* return size*/
@@ -178,6 +193,21 @@ public class SLList<lochNess> implements List61B<lochNess> {
             pfirst.next =null;
             return  firstitem;
         }
+    }
+    /* reverse*/
+    /* can not use new*/
+    public void reverse(){
+       if(size<=1){
+           return;
+       }
+       stuffNode ptr = sentinel.next;
+       sentinel.next = null;
+       while(ptr!=null){
+           stuffNode temp = ptr.next;
+           ptr.next = sentinel;
+           sentinel = ptr;
+           ptr = temp;
+       }
     }
 
 }

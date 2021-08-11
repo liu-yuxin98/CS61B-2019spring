@@ -1,25 +1,25 @@
 public class SLList {
 	/* nested class*/
 	/* private->can't be used out of the SLList class*/
-	/* static-> the IntNode class can't use the method out of the
-	!!IntNode class!!*/
-	private static class IntNode {
+	/* static-> the StuffNode class can't use the method out of the
+	!!StuffNode class!!*/
+	private  class StuffNode {
 		public int item;
-		public IntNode next;
-		public IntNode(int i,IntNode n){
+		public StuffNode next;
+		public StuffNode(int i,StuffNode n){
 			item = i;
 			next = n;
 		}
 
 	}
-	private IntNode first;
+	private StuffNode first;
 
 	public SLList(int x){
-		first = new IntNode(x,null); /*easification*/
+		first = new StuffNode(x,null); /*easification*/
 	}
 	/* add an item to the front of the array*/
 	public void addfirst(int x){
-		first = new IntNode(x,first);
+		first = new StuffNode(x,first);
 	}
 	/* get the first item of the array*/
 	public int getfirst(){
@@ -29,16 +29,16 @@ public class SLList {
 
 	/* add item x to the last*/
 	public void addLast(int x){
-		IntNode p = this.first;/* address of this.first*/
+		StuffNode p = this.first;/* address of this.first*/
 		while(p.next!=null){
 			p = p.next;
 		}
-		p.next = new IntNode(x,null);
+		p.next = new StuffNode(x,null);
 	}
 	
 
     /* returns the length of the arrays start from the InNode p*/
-    private static int size(IntNode p){
+    private static int size(StuffNode p){
     	if(p.next==null){
     		return 1;
     	}else{
@@ -58,8 +58,7 @@ public class SLList {
 		L.addfirst(0);
 		L.addLast(8);
 		System.out.println(L.size());
-		L.addLast(9);
-		System.out.println(L.size());
+		
 		
 
 	}
